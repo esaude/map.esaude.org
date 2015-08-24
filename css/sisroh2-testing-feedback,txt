@@ -1,0 +1,102 @@
+==============================================================================================================
+From Martins:
+==============================================================================================================
+
+CONSTATACOES DO SISROH-2.1
+
+O Numero de Certificado de Obito permite Introducao de Valores Alfanumericos; 
+Elementos de Dados nao Centralizados na Tabela de Relatorios;
+ 
+O Relatorio em Excel de “TOTAL DE OBITOS POR CAUSA DIRECTA/BASICA” nao segue um Padrao indentico ao do PDF;
+
+Na Exportacao de Dados ao Clicar a Componente “INCLUIR NOMES” apresenta apenas o Nome da Pessoa Falecida e as Variaveis como (Sexo, Nome_Hospital, Local de Ocorrencia do Obito, as Causas Basicas/Directa de Obito, Tipo de Obito, Raca, Endereco_Provincia/Distrito, Departamento/Servico, etc…), aparecem em Codigos.
+
+NB: Falta apenas Testar o Upgrade de SISROH-1 para SISROH-2, para isso, sera necessario uma Base de Dados Mapeada.
+ 
+De Momento estou a fazer os Screen Shots e respectiva interpretacao para incorporar no Manual do SISROH-2
+
+Em anexo a exportação de dados de SISROH2 da Província de Gaza,
+
+Para testar a importação a nível nacional
+
+
+-------------------------------------------------------------------------------------------------------------
+
+Findings of SISROH-2.1
+
+The Obito Certificate Number allows entry of alphanumeric values;
+Not Centralized Data elements in Table Reports;
+ 
+The Relatorio in Excel "total deaths BECAUSE DIRECT / BASIC" does not follow a indentico Monument to the PDF;
+
+In the Export Data to Click the component "NAMES INCLUDE" shows only the person's name deceased and Variables as (Sex, Nome_Hospital, Occurrence location of Obito, Causes Basicas / Direct Obito, type Obito, Raca, Endereco_Provincia / district, Department / Servico, etc ...), appear in Codes.
+
+NB: Lack SISROH only Test-1 Upgrade to SISROH-2, for this, it will be necessary one mapped database.
+ 
+Moment I'm doing the Screen Shots and their interpretation to incorporate in SISROH-2 Manual
+
+Attached to export data SISROH2 Gaza Province,
+
+To test the import at national level
+
+==============================================================================================================
+From Nayo:
+==============================================================================================================
+
+Após realizar os testes encontrei as seguintes constatações:
+
+Ao criar usuários só permitiu seleccionar províncias onde existiam hospitais
+Seria interessante se todos os relatórios pudessem aparecer em Excel e PDF e não somente alguns como " 
+Total de obitos por causa básica e sexo"
+Continuarei a testar caso encontre mais alguma coisa irei partilh
+
+-------------------------------------------------------------------------------------------------------------
+
+After performing the tests found the following findings:
+
+When creating users select only allowed provinces where there were hospitals
+It would be interesting if all reports could appear in Excel and PDF, not just some as "
+Total deaths because basic and sex "
+I will continue to test if it finds anything else will share
+
+==============================================================================================================
+From Jose Chauque:
+==============================================================================================================
+
+Abaixo os testes que fiz no SISROH2
+
+Fiz o lançamento de da dados em todos hospital
+Lançei dados a Nível Distrital
+Confirmei que não é possível lançar dados a nível provincial e Central
+Visualizei dados do nível inferior apartir dum superior ( Nacional, Provincial e Distrital)
+Elaborei relatórios a todos os níveis
+Exportei os dados lançados e o Nayo importou usando o perfil de administrador
+O NID é gerado automaticamente, mas não percebi a lógica da geração
+Em relação ao número de arquivo é gerado de uma forma sequencial, mas um sequência nacional, talvez poderíamos pensar num numero como Numero de identificação bancaria (NIB), assim todos os hospitais poderiam começar de Zero numa situação em que o sistema funcionasse online.
+
+
+De uma forma geral o sistema esta bom, simples amigável e fácil de usar.
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+Below the tests I made in SISROH2
+
+I made the release of the data on all hospital
+Cast data to District Level
+I confirmed that you can not release data at the provincial level and Central
+Visualized lower level data starting from a superior (National, Provincial and District)
+I prepared reports at all levels
+I exported the released data and Nayo imported using the administrator profile
+The NID is automatically generated, but did not realize the generation of logic
+Regarding the file number is generated sequentially, but a national following, maybe we could think of a number as identification number bank (NIB) and all hospitals could start Zero in a situation where the system worked online.
+
+
+In general the system is good, friendly simple and easy to use.
+
+
+==============================================================================================================
+
+
+
