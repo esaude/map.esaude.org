@@ -3,6 +3,7 @@ var ESAUDE_FACILITY_DATA_TABLE_COLS = ['Name', 'Version', '# Patients', 'Date St
 
 var map = {};
 var allMarkers = [];
+var group = {};
 
 // Initialise the split pane
 function initSplitPane() {
@@ -35,10 +36,20 @@ function initData() {
   });
 }
 
+function buildPopupString(facility) {
+  var popupString = '<span><img src="img/favicon.png"/ style="height:25px;padding-bottom:5px"> <span class="facility-name">' + facility.Name + '</span></span>';
+
+  for(var i = 1; i < ESAUDE_FACILITY_DATA_TABLE_COLS.length; i++) {
+    if(facility[ESAUDE_FACILITY_DATA_TABLE_COLS[i]]) {
+      popupString = popupString + '<br/><b>' + ESAUDE_FACILITY_DATA_TABLE_COLS[i] + ":</b> " + facility[ESAUDE_FACILITY_DATA_TABLE_COLS[i]];
+    }
+  }
+
+  return popupString;
+}
+
 // Process spreadsheet data
 function processData(data, tabletop) {
-  console.log(data);
-
 
   // Build table header
   var header = $("<thead id=\"esaude-header\"><tr id=\"esaude-header-row\"></tr></thead>");
@@ -62,22 +73,70 @@ function processData(data, tabletop) {
     // Basic latLng validation
     if(!/^\s*$/.test(data[j].Latitude) && !isNaN(data[j].Latitude) && data[j].Latitude >= -90 && data[j].Latitude <= 90
     && !/^\s*$/.test(data[j].Longitude) && !isNaN(data[j].Longitude) && data[j].Longitude >= -180 && data[j].Longitude <= 180) {
-      var marker = new L.marker(L.latLng(data[j].Latitude,data[j].Longitude)).bindPopup(data[j].Name);
+      var marker = new L.marker(L.latLng(data[j].Latitude,data[j].Longitude)).bindPopup(buildPopupString(data[j]));
+      marker.rowId = j;
       allMarkers.push(marker);
     }
+    row.DT_RowId = j;
 
     dataset.push(row);
   }
 
-  var group = L.featureGroup(allMarkers).addTo(map);
+  group = L.featureGroup(allMarkers).addTo(map);
   map.fitBounds(group.getBounds());
 
 
   // Initialise data table
   $('#esaude-facility-data-table').DataTable({
-    searching: false,
+    searching: true,
     paging: false,
-    data: dataset
+    data: dataset,
+    initComplete: function(settings, json) {
+      $('#my-divider > div').simulate("drag-n-drop", {
+        dy: -50,
+        interpolation: {
+          stepCount: 10,
+          duration: 750
+        },
+        callback: function() {
+          $('#my-divider > div').simulate("drag-n-drop", {
+            dy: 50,
+            interpolation: {
+              stepCount: 10,
+              duration: 750
+            }
+          });
+        }
+      });
+    }
+  });
+}
+
+function filterMarkers() {
+  var filteredMarkers = [];
+  var filteredData = $('#esaude-facility-data-table').dataTable()._('tr', {"filter":"applied"});
+
+  for(var i = 0; i < allMarkers.length; i++) {
+    for(var j = 0; j < filteredData.length; j++) {
+      if(allMarkers[i].rowId == filteredData[j].DT_RowId) {
+        filteredMarkers.push(allMarkers[i]);
+      }
+    }
+  }
+
+  map.removeLayer(group);
+
+  if(filteredMarkers.length > 0) {
+    group = L.featureGroup(filteredMarkers);
+    group.addTo(map);
+    map.fitBounds(group.getBounds(), {maxZoom: 17});
+  }
+}
+
+function initSearch() {
+  $('#search').on('keyup', function() {
+    $('#esaude-facility-data-table').DataTable().search($('#search').val()).draw();
+    filterMarkers();
   });
 }
 
@@ -90,4 +149,7 @@ function init() {
 
   // Initialise data
   initData();
+
+  // Initialise the search
+  initSearch();
 }

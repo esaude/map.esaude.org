@@ -16,13 +16,13 @@
     <link href='css/leaflet.css' rel='stylesheet' type='text/css'>
     <link href='css/mapa.esaude.org.css' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
   <div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
     <div class="split-pane horizontal-percent">
       <div class="split-pane-component" id="top-component">
         <div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
           <div id="map" class="data-map"></div>
+          <input id="search" class="flexsearch--input" type="search" placeholder="Pesquisar">
         </div>
       </div>
       <div class="split-pane-divider" id="my-divider"></div>
@@ -40,6 +40,9 @@
   <script type="text/javascript" src="js/tabletop.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="js/jquery.simulate.js"></script>
+  <script type="text/javascript" src="js/jquery.simulate.ext.js"></script>
+  <script type="text/javascript" src="js/jquery.simulate.drag-n-drop.js"></script>
   <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript" src="js/leaflet.js"></script>
   <script type="text/javascript" src="js/mapa.esaude.org.js"></script>
