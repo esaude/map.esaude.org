@@ -1,6 +1,6 @@
 var ESAUDE_FACILITY_DATA_SPREADSHEET_URL = '***REMOVED***';
-var ESAUDE_FACILITY_DATA_TABLE_COLS = ['Name', 'Version', '# Patients', 'Date Started', 'Partner', 'Hardware', 'Software', 'Training', 'Data Migration', 'Paper Retrospective', 'Data Quality'];
-
+var ESAUDE_FACILITY_DATA_TABLE_COLS = ['Name', 'Version', '# Patients', 'Date Started', 'Partner', 'Hardware', 'Software', 'Training', 'Data Migration', 'Paper Retrospective', 'Data Quality', '# Data Clerks', 'MOH Reporting', 'PEPFAR Reporting'];
+', '
 var map = {};
 var allMarkers = [];
 var group = {};
