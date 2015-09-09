@@ -15,7 +15,7 @@ If you're interested in running your own implementation map, you can download [t
 
 Create your own spreadsheet at [http://sheets.google.com](http://sheets.google.com). You then need to publish it and take note of the URL as described in the Tabletop.js documentation [here](https://github.com/jsoma/tabletop#1-getting-your-data-out-there).
 
-Note that you must have columns titled exaclty **Name**, **Longitude** and **Latitude**. Any other columns will automatically be added to the popup on the map. See [here](***REMOVED***) for an example.
+Note that you must have columns titled exaclty **Name**, **Longitude** and **Latitude**. Any other columns will automatically be added to the popup on the map. See [here](https://docs.google.com/spreadsheets/d/18FNhJO2Vv1yqBtII8LshlkMd70APa56lnEESbMDND1E/pubhtml?gid=0&single=true) for an example.
 
 #### 2. Create Mapbox Project
 
