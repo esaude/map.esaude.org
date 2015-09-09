@@ -27,7 +27,7 @@ Once you have published your Google Sheet and generated your Mapbox project ID a
 
 #### 4. Update Branding
 
-You will most likely want to update the page [description](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L7), [author](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L8) and [title](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L9) as well as the [favicon](https://github.com/esaude/mapa.esaude.org/blob/master/img/favicon.png) to match those of your organisation. The language of the search placeholder text can be changed [here](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L25).
+You will most likely want to update the page [description](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L7), [author](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L8) and [title](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L9) as well as the [favicon](https://github.com/esaude/mapa.esaude.org/blob/master/img/favicon.png) to match those of your organisation. The language of the search placeholder text can be changed [here](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L25) and the popover text [here](https://github.com/esaude/mapa.esaude.org/blob/master/index.html#L30).
 
 #### 5. Deploy
 

@@ -6,6 +6,7 @@ var ESAUDE_FACILITY_DATA_TABLE_COLS_TO_IGNORE = ['Latitude', 'Longitude'];
 var map = {};
 var allMarkers = [];
 var group = {};
+var visibleMarkers = L.markerClusterGroup({maxClusterRadius: 10});
 
 // Initialise the split pane
 function initSplitPane() {
@@ -31,6 +32,10 @@ function initMap() {
     map.invalidateSize({
       pan: false
     });
+  });
+
+  visibleMarkers.on('clusterclick', function (a) {
+    a.layer.zoomToBounds();
   });
 }
 
@@ -99,32 +104,14 @@ function processData(data, tabletop) {
     dataset.push(row);
   }
 
-  group = L.featureGroup(allMarkers).addTo(map);
-  map.fitBounds(group.getBounds());
-
-
   // Initialise data table
   $('#esaude-facility-data-table').DataTable({
     searching: true,
     paging: false,
     data: dataset,
     initComplete: function(settings, json) {
-      $('#my-divider > div').simulate("drag-n-drop", {
-        dy: -50,
-        interpolation: {
-          stepCount: 10,
-          duration: 750
-        },
-        callback: function() {
-          $('#my-divider > div').simulate("drag-n-drop", {
-            dy: 50,
-            interpolation: {
-              stepCount: 10,
-              duration: 750
-            }
-          });
-        }
-      });
+      // Draw initial markers
+      filterMarkers();
     }
   });
 }
@@ -135,20 +122,21 @@ function filterMarkers() {
     "filter": "applied"
   });
 
+  visibleMarkers.clearLayers();
+  map.removeLayer(visibleMarkers);
+
   for (var i = 0; i < allMarkers.length; i++) {
     for (var j = 0; j < filteredData.length; j++) {
       if (allMarkers[i].rowId == filteredData[j].DT_RowId) {
         filteredMarkers.push(allMarkers[i]);
+        visibleMarkers.addLayer(allMarkers[i]);
       }
     }
   }
 
-  map.removeLayer(group);
-
   if (filteredMarkers.length > 0) {
-    group = L.featureGroup(filteredMarkers);
-    group.addTo(map);
-    map.fitBounds(group.getBounds(), {
+    map.addLayer(visibleMarkers);
+    map.fitBounds(L.featureGroup(filteredMarkers), {
       maxZoom: 17
     });
   }
@@ -165,6 +153,15 @@ function init() {
   // Initialise split pane
   initSplitPane();
 
+  // Enable popover
+  $('body').popover({
+    trigger: "hover",
+    html: true,
+    placement: "top",
+    selector: "[data-toggle=popover]",
+    container: "body"
+  });
+
   // Initialise the map
   initMap();
 
@@ -173,4 +170,12 @@ function init() {
 
   // Initialise the search
   initSearch();
+
+  //$('#my-divider').popover('show');
+  setTimeout(function() {
+    $('#my-divider').trigger('mouseover');
+    setTimeout(function() {
+      $('#my-divider').trigger('mouseout');
+    }, 2000);
+  }, 5000);
 }
