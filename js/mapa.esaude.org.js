@@ -1,4 +1,7 @@
 var ESAUDE_FACILITY_DATA_SPREADSHEET_URL = '***REMOVED***';
+var ESAUDE_FACILITY_MAP_ID = '***REMOVED***';
+var ESAUDE_FACILITY_MAP_TOKEN = '***REMOVED***';
+
 var ESAUDE_FACILITY_DATA_TABLE_COLS_TO_IGNORE = ['Latitude', 'Longitude'];
 var map = {};
 var allMarkers = [];
@@ -19,8 +22,8 @@ function initMap() {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 17,
     subdomains: ['a', 'b', 'c', 'd'],
-    mapId: '***REMOVED***',
-    token: '***REMOVED***'
+    mapId: ESAUDE_FACILITY_MAP_ID,
+    token: ESAUDE_FACILITY_MAP_TOKEN
   }).addTo(map);
 
   // Ensure the map tiles are drawn when the split pane is resized
